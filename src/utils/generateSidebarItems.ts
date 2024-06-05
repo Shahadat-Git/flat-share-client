@@ -37,6 +37,11 @@ export const generateSideBarItems = (role: TUserRole): TSideBarItem[] => {
           title: "Flat Management",
           path: `${role}/flat-manage`,
           icon: ApartmentIcon,
+        },
+        {
+          title: "Bookings",
+          path: `${role}/bookings`,
+          icon: ApartmentIcon,
         }
       );
       break;

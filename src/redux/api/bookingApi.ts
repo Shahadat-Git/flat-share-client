@@ -21,8 +21,31 @@ const bookingApi = baseApi.injectEndpoints({
       }),
       providesTags: [tagTypes.bookingRequests],
     }),
+
+    getAllBookingRequests: build.query({
+      query: () => ({
+        url: "/booking-request/all-booking-requests",
+        method: "GET",
+      }),
+      providesTags: [tagTypes.allBookingRequests],
+    }),
+
+    updateBookingStatus: build.mutation({
+      query: (arg) => {
+        return {
+          url: `/booking-request/${arg?.id}`,
+          method: "put",
+          data: arg?.data,
+        };
+      },
+      invalidatesTags: [tagTypes.bookingRequests, tagTypes.allBookingRequests],
+    }),
   }),
 });
 
-export const { useCreateBookingRequestMutation, useGetMyBookingRequestsQuery } =
-  bookingApi;
+export const {
+  useCreateBookingRequestMutation,
+  useGetMyBookingRequestsQuery,
+  useGetAllBookingRequestsQuery,
+  useUpdateBookingStatusMutation,
+} = bookingApi;
