@@ -4,7 +4,12 @@ import { TFlat } from "@/types/flat";
 import Link from "next/link";
 
 const FlatList = async () => {
-  const res = await fetch("https://next-flat-share-server.vercel.app/api/flat");
+  const res = await fetch(
+    "https://next-flat-share-server.vercel.app/api/flat",
+    {
+      cache: "no-cache",
+    }
+  );
   const { data: flats } = await res.json();
   //   console.log(flats);
   return (
