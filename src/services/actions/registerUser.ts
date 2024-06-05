@@ -2,7 +2,7 @@
 import { FieldValues } from "react-hook-form";
 
 export const registerUser = async (data: FieldValues) => {
-  const res = await fetch("http://localhost:5000/api/user/register", {
+  const res = await fetch("https://next-flat-share-server.vercel.app/api/user/register", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),

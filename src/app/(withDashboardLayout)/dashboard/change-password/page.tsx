@@ -17,9 +17,6 @@ const ChangePasswordPage = () => {
   const router = useRouter();
   const handleChangePassword = async (values: FieldValues) => {
     if (values.newPassword === values.retypeNewPassword) {
-      // values.currentPassword = parseInt(values.currentPassword);
-      // values.newPassword = parseInt(values.newPassword);
-      // values.retypeNewPassword = parseInt(values.retypeNewPassword);
       try {
         const res = await changePassword(values).unwrap();
         if (res?.data === null) {

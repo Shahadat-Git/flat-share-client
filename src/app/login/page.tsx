@@ -28,7 +28,7 @@ const LoginPage = () => {
         });
         toast.success("User login successfully");
 
-        router.push("/");
+        // router.push("/");
       } else {
         setError(res?.message);
       }

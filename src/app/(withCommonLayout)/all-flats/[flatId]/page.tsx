@@ -7,7 +7,7 @@ type TParams = {
 
 const FlatDetailPage = async ({ params }: { params: TParams }) => {
   const flatId = params.flatId;
-  const res = await fetch(`http://localhost:5000/api/flat/${flatId}`);
+  const res = await fetch(`https://next-flat-share-server.vercel.app/api/flat/${flatId}`);
   const { data: flat } = await res.json();
 
   return (

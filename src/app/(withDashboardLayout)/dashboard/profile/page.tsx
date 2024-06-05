@@ -16,7 +16,7 @@ const ProfilePage = () => {
           borderRadius: "10px",
           backgroundColor: "#FFC300",
           color: "white",
-          minWidth: "800px",
+          minWidth: { lg: "800px" , xs: "100%"},
         }}
       >
         <Box sx={{}}>

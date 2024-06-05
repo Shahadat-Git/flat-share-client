@@ -4,7 +4,7 @@ import { Box, Container, Grid, Typography } from "@mui/material";
 import React from "react";
 
 const AllFlatPage = async () => {
-  const res = await fetch("http://localhost:5000/api/flat", {
+  const res = await fetch("https://next-flat-share-server.vercel.app/api/flat", {
     next: {
       revalidate: 30,
     },
