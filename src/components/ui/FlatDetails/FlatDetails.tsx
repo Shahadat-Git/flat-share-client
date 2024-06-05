@@ -7,6 +7,21 @@ const FlatDetails = ({ flat }: { flat: TFlat }) => {
   return (
     <Container sx={{ mt: "40px" }}>
       <Stack direction={{ md: "row" }} spacing={2}>
+        {flat?.photos.map((item, idx) => (
+          <Box
+            key={idx}
+            sx={{ width: { md: "65%" }, height: 440, position: "relative" }}
+          >
+            <Image
+              src={item}
+              layout="fill"
+              objectFit="cover"
+              alt="featuredImage"
+            />
+          </Box>
+        ))}
+      </Stack>
+      {/* <Stack direction={{ md: "row" }} spacing={2}>
         <Box sx={{ width: { md: "65%" }, height: 440, position: "relative" }}>
           <Image
             src={flat?.photos[0]}
@@ -50,7 +65,7 @@ const FlatDetails = ({ flat }: { flat: TFlat }) => {
             </Box>
           </Box>
         </Box>
-      </Stack>
+      </Stack> */}
       <Box>
         <Typography my={"20px"}>
           <span style={{ fontWeight: "bold" }}>Detailed Description</span>:{" "}
@@ -82,21 +97,20 @@ const FlatDetails = ({ flat }: { flat: TFlat }) => {
               {flat?.totalRooms}
             </Typography>
             <Box
-            sx={{
-              maxWidth: "350px",
-              maxHeight: "350px",
-              mt: { xs: "20px", md: "10px" },
-            }}
-          >
-            <Button
-              component={Link}
-              href={`/dashboard/user/flat-share-request/${flat.id}`}
+              sx={{
+                maxWidth: "350px",
+                maxHeight: "350px",
+                mt: { xs: "20px", md: "10px" },
+              }}
             >
-              Send Share Request
-            </Button>
+              <Button
+                component={Link}
+                href={`/dashboard/user/flat-share-request/${flat.id}`}
+              >
+                Send Share Request
+              </Button>
+            </Box>
           </Box>
-          </Box>
-          
         </Stack>
       </Box>
     </Container>

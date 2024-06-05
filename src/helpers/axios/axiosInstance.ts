@@ -1,4 +1,5 @@
 import { authKey } from "@/constants/auth";
+import deleteCookies from "@/services/actions/deleteCookies";
 
 import { IGenericErrorResponse, TResponseSuccess } from "@/types";
 import axios from "axios";
@@ -27,8 +28,7 @@ instance.interceptors.response.use(
   function (response) {
     // console.log("console from axios instance =>", response);
     const responseObject: TResponseSuccess = {
-      data: response?.data?.data,
-      meta: response?.data?.meta,
+      data: response?.data,
     };
     return responseObject;
   },
@@ -37,6 +37,8 @@ instance.interceptors.response.use(
     if (error?.response?.status === 401 && !config.sent) {
       config.sent = true;
       localStorage?.removeItem(authKey);
+      deleteCookies([authKey]);
+
       return instance(config);
     } else {
       const responseObject: IGenericErrorResponse = {

@@ -3,9 +3,6 @@ import { Box, List, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import logo from "@/assets/images/logo.png";
 import Link from "next/link";
-// import { generateDrawerItems } from "@/utils/generateDrawerItems";
-
-// import SideBarItems from "./SideBarItems";
 import { useEffect, useState } from "react";
 import { getUserInfo } from "@/services/actions/authServices";
 import { generateSideBarItems } from "@/utils/generateSidebarItems";
@@ -32,9 +29,9 @@ const SideBar = () => {
           mt: 1,
         }}
       >
-        <Image src={logo} alt="logo" width={40} height={40} />
-        <Typography variant="h6" component={"h1"}>
-          Flat Share
+        <Image src={logo} alt="logo" width={80} height={40} />
+        <Typography variant="h5" component={"h4"}>
+          Next Flat
         </Typography>
       </Stack>
       <List>

@@ -8,8 +8,10 @@ import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import Logout from "@mui/icons-material/Logout";
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { useRouter } from "next/navigation";
+import { logoutUser } from "@/services/actions/logoutUser";
+import Link from "next/link";
 
 const menuStyles = {
   paper: {
@@ -51,8 +53,7 @@ export default function ProfileMenu() {
   };
   const handleLogout = () => {
     setAnchorEl(null);
-    localStorage.removeItem("accessToken");
-    router.push("/login");
+    logoutUser(router);
   };
 
   return (
@@ -64,7 +65,7 @@ export default function ProfileMenu() {
             tooltip: {
               sx: {
                 bgcolor: "#cdd1da5c",
-                color: "primary.main", // Change text color if necessary
+                color: "primary.main",
               },
             },
           }}
@@ -74,7 +75,6 @@ export default function ProfileMenu() {
             aria-controls={open ? "account-menu" : undefined}
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
-            //   size='small'
             sx={{
               background: "#ffffff",
               "& svg": {
@@ -98,10 +98,12 @@ export default function ProfileMenu() {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <MenuItem onClick={handleClose}>
-          <Avatar sx={{ background: "transparent", color: "primary.main" }} />
-          Profile
-        </MenuItem>
+        <Link href={"/dashboard/profile"}>
+          <MenuItem onClick={handleClose}>
+            <Avatar sx={{ background: "transparent", color: "primary.main" }} />
+            Profile
+          </MenuItem>
+        </Link>
 
         <Divider />
 

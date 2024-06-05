@@ -33,7 +33,6 @@ const FlatShareRequestPage = ({ params }: { params: TParams }) => {
   };
   const flatId = params?.flatId;
   const userInfo = getUserInfo();
-
   const handleBookingRequest = async (values: FieldValues) => {
     setError("");
     if (isChecked) {
@@ -44,10 +43,12 @@ const FlatShareRequestPage = ({ params }: { params: TParams }) => {
           profession: values?.profession,
           email: userInfo?.email,
         };
-        const res = await createBookingRequest(bookingRequestValues);
-        if (res?.data?.id) {
+        const res = await createBookingRequest(bookingRequestValues).unwrap();
+        if (res?.success) {
           toast.success("Booking request send successfully");
           router.push("/dashboard/user/my-requests");
+        } else {
+          toast.error("Something went wrong");
         }
       } catch (error) {
         toast.error("Something went wrong");
@@ -88,6 +89,7 @@ const FlatShareRequestPage = ({ params }: { params: TParams }) => {
           </Stack>
           <Box textAlign={"center"}>
             <ReUseForm
+            defaultValues={userInfo}
               onSubmit={handleBookingRequest}
               resolver={zodResolver(bookingRequestValidationSchema)}
             >
@@ -115,7 +117,6 @@ const FlatShareRequestPage = ({ params }: { params: TParams }) => {
                     type="email"
                     name="email"
                     fullWidth={true}
-                    value={userInfo?.email}
                   />
                 </Grid>
 

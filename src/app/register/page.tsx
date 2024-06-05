@@ -5,6 +5,7 @@ import { authKey } from "@/constants/auth";
 import { registerValidationSchema } from "@/schemas/register";
 import { loginUser } from "@/services/actions/loginUser";
 import { registerUser } from "@/services/actions/registerUser";
+import setAccessTokenToCookies from "@/services/actions/setAccessTokenToCookie";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
 import Link from "next/link";
@@ -35,7 +36,9 @@ const RegisterPage = () => {
           if (result?.success) {
             toast.success("User login successfully");
             localStorage.setItem(authKey, result?.data?.token);
-            router.push("/");
+            setAccessTokenToCookies(result?.data?.token, {
+              redirect: "/",
+            });
           }
         } else {
           toast.error(res.message);

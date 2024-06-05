@@ -19,8 +19,8 @@ const UserTable = ({ users }: { users: any }) => {
       const res = await changeStatus({
         userId,
         body: { status },
-      });
-      if (res?.data?.id) {
+      }).unwrap();
+      if (res?.success) {
         toast.success("User status updated successfully");
       } else {
         toast.error("Something went wrong");
@@ -38,7 +38,7 @@ const UserTable = ({ users }: { users: any }) => {
         body: { role },
       }).unwrap();
       console.log(res);
-      if (res?.id) {
+      if (res?.success) {
         toast.success("User role updated successfully");
       } else {
         toast.error("Something went wrong");
@@ -103,7 +103,7 @@ const UserTable = ({ users }: { users: any }) => {
   ];
   return (
     <div style={{ height: 700, width: "100%" }}>
-      <DataGrid rows={users} columns={columns} />
+      <DataGrid rows={users} columns={columns} hideFooterPagination />
     </div>
   );
 };

@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
@@ -18,11 +17,8 @@ import logo from "@/assets/images/logo.png";
 import { getUserInfo, isLoggedIn } from "@/services/actions/authServices";
 import { useRouter } from "next/navigation";
 import { logoutUser } from "@/services/actions/logoutUser";
-import { useGetAllUserQuery } from "@/redux/api/userApi";
 
 const Navbar = () => {
-  const { data } = useGetAllUserQuery({});
-  console.log(data);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const theme = useTheme();

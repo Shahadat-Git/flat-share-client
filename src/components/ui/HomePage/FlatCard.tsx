@@ -10,7 +10,14 @@ import Link from "next/link";
 
 export default function FlatCard({ flat }: { flat: TFlat }) {
   return (
-    <Card sx={{ height: 500, display: "flex", flexDirection: "column" }}>
+    <Card
+      sx={{
+        height: 500,
+        display: "flex",
+        flexDirection: "column",
+        width: "100%",
+      }}
+    >
       <CardMedia
         sx={{ height: 200 }}
         image={flat?.photos[0]}

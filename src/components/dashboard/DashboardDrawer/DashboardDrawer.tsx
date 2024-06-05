@@ -8,13 +8,9 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-// import { useGetSingleUserQuery } from "@/redux/api/userApi";
-import { Avatar, Badge, Stack } from "@mui/material";
-import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
+import { Stack } from "@mui/material";
 import SideBar from "../SideBar/SideBar";
-import AccountMenu from "../ProfileMenu/ProfileMenu";
 import ProfileMenu from "../ProfileMenu/ProfileMenu";
-// import AccountMenu from "../AccountMenu/AccountMenu";
 const drawerWidth = 240;
 
 export default function DashboardDrawer({
@@ -24,7 +20,6 @@ export default function DashboardDrawer({
 }) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [isClosing, setIsClosing] = React.useState(false);
-  //   const { data, isLoading } = useGetSingleUserQuery({});
 
   const handleDrawerClose = () => {
     setIsClosing(true);

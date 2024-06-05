@@ -9,7 +9,7 @@ type TInputProps = {
   fullWidth?: boolean;
   sx?: SxProps;
   required?: boolean;
-  value?: any;
+  value?: string | number | boolean;
 };
 
 const ReUseInput = ({
@@ -38,7 +38,7 @@ const ReUseInput = ({
           fullWidth={fullWidth}
           error={!!error?.message}
           helperText={error?.message}
-          value={value}
+          // value={value}
         />
       )}
     />

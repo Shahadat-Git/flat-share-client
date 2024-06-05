@@ -12,6 +12,7 @@ import { FieldValues } from "react-hook-form";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { storeUserInfo } from "@/services/actions/authServices";
+import setAccessTokenToCookies from "@/services/actions/setAccessTokenToCookie";
 
 const LoginPage = () => {
   const [error, setError] = useState("");
@@ -22,6 +23,9 @@ const LoginPage = () => {
       const res = await loginUser(values);
       if (res?.success) {
         storeUserInfo(res?.data?.token);
+        setAccessTokenToCookies(res?.data?.token, {
+          redirect: "/",
+        });
         toast.success("User login successfully");
 
         router.push("/");

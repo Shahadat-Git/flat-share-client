@@ -30,30 +30,14 @@ const MyBookingRequestTable = ({
     { field: "location", headerName: "location", flex: 1 },
     { field: "rentAmount", headerName: "Rent Amount", flex: 1 },
     { field: "status", headerName: "Status", flex: 1 },
-
-    // {
-    //   field: "action",
-    //   headerName: "Action",
-    //   flex: 1,
-    //   headerAlign: "center",
-    //   align: "center",
-    //   renderCell: ({ row }) => {
-    //     return (
-    //       <Box>
-    //         <IconButton
-    //           //   onClick={() => handleDeleteFlat(row.id)}
-    //           aria-label="delete"
-    //         >
-    //           <DeleteIcon sx={{ color: "red" }} />
-    //         </IconButton>
-    //       </Box>
-    //     );
-    //   },
-    // },
   ];
   return (
     <div style={{ height: 700, width: "100%" }}>
-      <DataGrid rows={updatedBookingRequests} columns={columns} />
+     <DataGrid
+        rows={updatedBookingRequests}
+        columns={columns}
+        hideFooterPagination
+      />
     </div>
   );
 };
